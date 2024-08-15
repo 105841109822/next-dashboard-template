@@ -20,14 +20,6 @@ export default async function Page() {
         <h1 className={`${lusitana.className} mb-4 text-xl md:text-2xl`}>
             Dashboard
         </h1>
-        <div className="mb-6">
-        <h2 className={`${lusitana.className} mb-4 text-lg md:text-xl`}>
-            Revenue Chart
-        </h2>
-        <Suspense fallback={<RevenueChartSkeleton />}>
-            <RevenueChart />
-        </Suspense>
-        </div>
         <h2 className={`${lusitana.className} mt-6 mb-4 text-lg md:text-xl`}>
             Overview
         </h2>
@@ -35,10 +27,15 @@ export default async function Page() {
         <Suspense fallback={<CardsSkeleton />}>
             <CardWrapper />
             </Suspense>
+        </div>
+        <div className="mt-6">
+        <Suspense fallback={<RevenueChartSkeleton />}>
+            <RevenueChart />
+        </Suspense>
+        </div>
         <Suspense fallback={<LatestInvoicesSkeleton />}>
             <LatestInvoices latestInvoices={latestInvoices} />
         </Suspense>
-        </div>
         </main>
     );
 }
